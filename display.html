@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- menu on top -->
+<header class="bg-dark fixed-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="text-white">MATH.RANDOM PSW generator.</p>
+            </div>
+            <div class="col-md-6 text-right">
+                <nav>
+                    <a href="explicacion.html" class="text-white">MENU</a>
+                    <a href="display.html" class="text-white">LISTADO</a>
+                    <a href="index.html" class="text-white">GENERADOR</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <h1>Password Generator</h1>
+
+    <!-- Display saved accounts in a table -->
+    <table class="table table-bordered table-striped mt-4">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nombre de Usuario</th>
+                <th>Plataforma</th>
+                <th>Mail</th>
+                <th>Contraseña</th>
+            </tr>
+        </thead>
+        <tbody id="accountList">
+            <!-- Accounts will be dynamically added here -->
+        </tbody>
+    </table>
+
+    <!-- Input field and button for removing an element -->
+    <div class="remove-element mt-4">
+        <label for="indiceEliminar">Indice del elemento a eliminar (0-x):</label>
+        <input type="text" id="indiceEliminar" class="form-control" placeholder="0">
+        <button onclick="eliminarElemento()" class="btn btn-danger mt-2">Eliminar</button>
+    </div>
+</main>
+
+<!-- Add Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.9/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script src="script.js"></script>
+</body>
+</html>
