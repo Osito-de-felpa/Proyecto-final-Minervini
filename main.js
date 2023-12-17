@@ -12,21 +12,22 @@ function copyContent() {
     });
 }
 
-//generate password using promises
+//generate passwors using promise
 function generatePassword() {
     return new Promise((resolve, reject) => {
         try {
             var inputElement = document.getElementById("cant_caracters").value;
+            let password = ""
             for (i=0; i<inputElement; i++){
-                let password = new Array(inputElement).fill().map(() => String.fromCharCode(Math.random()*86+40)).join("");
+                password += new Array(inputElement).fill().map(() => String.fromCharCode(Math.random()*86+40)).join("");
             }
-            return(password);
+            console.log(password)
+            resolve(password);
         } catch (error) {
             reject(error);
         }
     });
 }
-
 
 // calls a function to create a password and updates the output field using promises
 function crear_contraseña() {
