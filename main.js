@@ -1,3 +1,5 @@
+var data = []
+
 //copy content using a promise
 function copyContent() {
     return new Promise((resolve, reject) => {
@@ -55,6 +57,22 @@ function save_account() {
                 mail: mail,
                 contraseña: password
             };
+
+            // Retrieving the array from local storage
+            var retrievedDataString = localStorage.getItem('data');
+
+            // Parse the JSON string back to an array
+            var retrievedData = JSON.parse(retrievedDataString);
+
+            // push object to the array
+            data.push(objetoCuenta);
+            console.log("Account saved sucesfully:", objetoCuenta);
+            
+            // Convert the array to a JSON string
+            var dataString = JSON.stringify(data);
+            
+            // Save the array in local storage
+            localStorage.setItem('data', dataString);
 
             // push object to the array
             data.push(objetoCuenta);
