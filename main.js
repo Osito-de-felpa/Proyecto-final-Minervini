@@ -3,17 +3,12 @@ let password = 0
 
 //copy content using a promise
 function copyContent() {
-    return new Promise((resolve, reject) => {
-        try {
-            var inputField = document.getElementById('inputField');
-            var outputField = document.getElementById('outputField');
-            outputField.value = inputField.value;
-            resolve("la contraseña se copio exitosamente!");
-        } catch (error) {
-            reject(error);
-        }
-    });
-}
+    const outputField = document.getElementById('outputField');
+    outputField.select();
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
+    alert('texto copiado!');
+  }
 
 //generate passwors using promise
 function generatePassword() {
