@@ -1,4 +1,5 @@
 var data = []
+let password = 0
 
 //copy content using a promise
 function copyContent() {
@@ -18,10 +19,11 @@ function copyContent() {
 function generatePassword() {
     return new Promise((resolve, reject) => {
         try {
+            password = 0
             var inputElement = document.getElementById("cant_caracters").value;
-            let password = ""
             for (i=0; i<inputElement; i++){
-                password += new Array(inputElement).fill().map(() => String.fromCharCode(Math.random()*86+40)).join("");
+                let letter = new Array(inputElement).fill().map(() => String.fromCharCode(Math.random()*86+40)).join("");
+                password = password + letter
             }
             console.log(password)
             resolve(password);
@@ -41,48 +43,6 @@ function crear_contraseña() {
         })
         .catch(error => {
             console.error("Error creating the password:", error);
-        });
-}
-
-//  save the password and account information using promises
-function save_account() {
-    var nombreUsuario = document.getElementById('nombreUsuario').value;
-    var nombrePlataforma = document.getElementById('nombrePlataforma').value;
-    var mail = document.getElementById('mail').value;
-    var password = document.getElementById('outputField').value;
-            // Create an account object
-            var objetoCuenta = {
-                nombreUsuario: nombreUsuario,
-                nombrePlataforma: nombrePlataforma,
-                mail: mail,
-                contraseña: password
-            };
-
-            // Retrieving the array from local storage
-            var retrievedDataString = localStorage.getItem('data');
-
-            // Parse the JSON string back to an array
-            var retrievedData = JSON.parse(retrievedDataString);
-
-            // push object to the array
-            data.push(objetoCuenta);
-            console.log("Account saved sucesfully:", objetoCuenta);
-            
-            // Convert the array to a JSON string
-            var dataString = JSON.stringify(data);
-            
-            // Save the array in local storage
-            localStorage.setItem('data', dataString);
-
-            // push object to the array
-            data.push(objetoCuenta);
-            console.log("Account saved sucesfully:", objetoCuenta);
-            updateAccountList();
-
-            alert("los datos se han guardado exitosamente .");
-        })
-        .catch(error => {
-            console.error("Error saving the information::", error);
         });
 }
 
@@ -106,4 +66,37 @@ function updateAccountList() {
 }
 
 
-updateAccountList();
+//  save the password and account information using promises
+function save_account() {
+    var nombreUsuario = document.getElementById('nombreUsuario').value;
+    var nombrePlataforma = document.getElementById('nombrePlataforma').value;
+    var mail = document.getElementById('mail').value;
+    var password = document.getElementById('outputField').value;
+    // Create an account object
+    var objetoCuenta = {
+    nombreUsuario: nombreUsuario,
+    nombrePlataforma: nombrePlataforma,
+    mail: mail,
+    contraseña: password
+    };
+
+    // Retrieving the array from local storage
+    var retrievedDataString = localStorage.getItem('data');
+
+    // Parse the JSON string back to an array
+    var retrievedData = JSON.parse(retrievedDataString);
+
+    // push object to the array
+    data.push(objetoCuenta);
+    console.log("Account saved sucesfully:", objetoCuenta);
+       
+    // Convert the array to a JSON string
+    var dataString = JSON.stringify(data);
+          
+    // Save the array in local storage
+    localStorage.setItem('data', dataString);
+
+    updateAccountList();
+    alert("los datos se han guardado exitosamente .");
+    
+}
